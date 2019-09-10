@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return ('Esta aplicação é a primeira de testes da turma do curso de Laravel de 09/09 a 13/09.');
+});
+
+Route::get('/phpinfo', function () {
+    phpinfo();
+});
+
+Route::get('/helloworld', "TesteController@index") ;
+
+Route::get('/helloworld/nome/{nome}/email/{email?}', "TesteController@index2") ;
+/*  tem que ter ? para   parametros que não são obrigatórios */
+
