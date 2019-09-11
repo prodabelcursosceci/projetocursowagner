@@ -3,27 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TesteController extends Controller
 {
-    public function index(Request $req)
-    {
-        $nome = $req->nome ;
+# Passando parâmetros: 1ª maneira
+public function index(Request $req)
+{
+// Valida a variavel requerida e tamanho máximo de 10 caracteres
+$validator = Validator::make($req->all(), ['nome' => 'required|max:10|alpha|ends_with:a']);
 
-        echo "Hello wooorld, $nome";
-        return view('welcome');
 
-    }
+if($validator->fails()) {
+   $errors = $validator->errors()->all();
+}
+$nome = $req->nome;
+$ola = 'mundo!';
 
-    public function index2($nome, $email=null)
-    {
-        echo "Hello wooorld, $nome<br>";
-        if ($email) 
-        {
-            echo "email, $email<br>";
-        }
-        
-        return view('welcome');
+echo "Hello world! , $nome<br>";
+return view('index', compact(['nome','ola', 'errors']));
+}
 
-    }
+public function indexPost(Request $req)
+{
+
+   return "Dados enviados !! < $req->telefone >";
+}
+
+# Passando parâmetros: 2ª maneira
+public function index2($nome, $idade=null)
+{
+echo "Hello world , $nome !<br>" ;
+if ($idade){
+echo "Você tem $idade anos !<br>" ;
+}
+return view('welcome'); 
+}
+
 }

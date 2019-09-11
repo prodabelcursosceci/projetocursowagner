@@ -23,7 +23,9 @@ Route::get('/phpinfo', function () {
     phpinfo();
 });
 
-Route::get('/helloworld', "TesteController@index") ;
+Route::get('/index1', "TesteController@index") ;
+Route::post('/index1', "TesteController@indexPost") ;
+
 
 Route::get('/helloworld/nome/{nome}/email/{email?}', "TesteController@index2") ;
 /*  tem que ter ? para   parametros que não são obrigatórios */
