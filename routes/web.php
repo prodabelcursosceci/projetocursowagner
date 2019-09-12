@@ -30,3 +30,7 @@ Route::post('/index1', "TesteController@indexPost") ;
 Route::get('/helloworld/nome/{nome}/email/{email?}', "TesteController@index2") ;
 /*  tem que ter ? para   parametros que não são obrigatórios */
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
