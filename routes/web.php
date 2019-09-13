@@ -34,3 +34,5 @@ Route::get('/helloworld/nome/{nome}/email/{email?}', "TesteController@index2") ;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('cidades', 'CidadeController');
